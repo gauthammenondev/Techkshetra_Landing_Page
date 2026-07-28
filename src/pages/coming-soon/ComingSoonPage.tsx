@@ -139,14 +139,16 @@ export function ComingSoonPage(): React.JSX.Element {
         {/* Stacked reveal container */}
         <div className={styles.revealContainer}>
           {/* "Coming Soon" — revealed when FallingText is triggered */}
-          <h1
+          <a
+            href="https://www.tk26.in/"
             className={`${styles.comingSoonText} ${hasRevealed ? styles.comingSoonRevealed : styles.comingSoonHidden}`}
+            style={{ textDecoration: 'none' }}
           >
-            Coming<br />Soon
-          </h1>
+            Join<br />Now
+          </a>
 
           {/* FallingText overlay */}
-          <div 
+          <div
             className={styles.fallingTextOverlay}
             style={{ pointerEvents: lightOn ? 'auto' : 'none' }}
           >
@@ -166,15 +168,24 @@ export function ComingSoonPage(): React.JSX.Element {
           </div>
         </div>
 
-        {/* Click hint — visible only after light is on but before text falls */}
+        {/* Click hints */}
         {lightOn && !hasRevealed && (
-          <p 
-            className={styles.clickHint} 
+          <p
+            className={styles.clickHint}
             onClick={handleFall}
             style={{ cursor: 'pointer', zIndex: 30, position: 'relative' }}
           >
             click to reveal
           </p>
+        )}
+        {hasRevealed && (
+          <a
+            href="https://www.tk26.in/"
+            className={styles.clickHint}
+            style={{ zIndex: 30, position: 'relative', textDecoration: 'none' }}
+          >
+            CLICK TO JOIN NOW
+          </a>
         )}
 
         <div className={styles.divider} />
